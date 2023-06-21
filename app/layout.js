@@ -10,7 +10,7 @@ const oswald = Oswald({ subsets: ['latin'] })
 const urbanist = Urbanist({ subsets: ['latin'] })
 
 
-export const metadata = {
+const metadata = {
   title: 'ManStyle Mart',
   description: 'E-Commerce-Website',
 }
