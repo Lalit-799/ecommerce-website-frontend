@@ -10,8 +10,8 @@ export async function generateStaticParams() {
     headers: { authorization:'Bearer '+STRAPI_API_TOKEN },
   }).then((res) => res.json())
  
-  return categorys.data.map((c) => ({
-    category: c?.attributes?.slug,
+  return categorys?.data?.map((c) => ({
+    category: c.attributes.slug,
   }))
 }
 
