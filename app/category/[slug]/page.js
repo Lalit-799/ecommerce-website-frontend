@@ -3,7 +3,7 @@ import Wrapper from '@/app/components/Wrapper'
 import { API_URL, STRAPI_API_TOKEN } from '@/utils/urls'
  
 // below fuction to get static paths
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const categorys = await fetch(`${API_URL}/api/categories?populate=*`, {

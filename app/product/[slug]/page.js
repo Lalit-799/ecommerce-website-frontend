@@ -3,7 +3,7 @@
  import React from 'react'
 
  // below fuction to get static paths
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const products = await fetch(`${API_URL}/api/products?populate=*`, {
