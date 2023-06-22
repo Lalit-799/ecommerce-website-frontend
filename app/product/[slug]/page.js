@@ -19,17 +19,17 @@ export async function generateStaticParams() {
 
 
 
-export default async function Product({params}){
-    const {slug}=params
+export default async function Product({params:{slug}}){
+    
      // data fatching start
   const res = await fetch(`${API_URL}/api/products?populate=*&filters[slug][$eq]=${slug}`, {
    headers: { authorization:'Bearer '+STRAPI_API_TOKEN },
- },{ next: { revalidate: 60 } });
+ });
  const product = await res.json();
  
  const re = await fetch(`${API_URL}/api/products?populate=*&[filters][slug][$ne]=${slug}`, {
    headers: { authorization:'Bearer '+STRAPI_API_TOKEN },
- },{ next: { revalidate: 60 } });
+ });
  const products = await re.json()
  // data fatching end
   return (
