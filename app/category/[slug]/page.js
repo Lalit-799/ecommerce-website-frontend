@@ -11,20 +11,20 @@ export async function generateStaticParams() {
   }).then((res) => res.json())
  
   return categorys?.data?.map((c) => ({
-    category: c.attributes.slug,
+    slug: c.attributes.slug,
   }))
 }
 
-export default async function category({params:{slug}}){
-
-      // data fatching start
+export default async function category({params}){
+    const {slug}=params
+   // data fatching start
   const res = await fetch(`${API_URL}/api/categories?filters[slug][$eq]=${slug}`, {
     headers: { authorization:'Bearer '+STRAPI_API_TOKEN },
-  },{next: {revalidate: 20,},});
+  });
   const category = await res.json();
   const re = await fetch(`${API_URL}/api/products?populate=*&[filters][category][slug][$eq]=${slug}`, {
     headers: { authorization:'Bearer '+STRAPI_API_TOKEN },
-  },{next: {revalidate: 20,},});
+  });
   const products = await re.json()
   // data fatching end
    
