@@ -8,7 +8,7 @@ export const dynamicParams = false;
 export async function generateStaticParams() {
   const categorys = await fetch(`${API_URL}/api/categories?populate=*`, {
     headers: { authorization:'Bearer '+STRAPI_API_TOKEN },
-  },{cache: "force-cache"}).then((res) => res.json())
+  }).then((res) => res.json())
  
   return categorys?.data?.map((c) => ({
     category: c.attributes.slug,
