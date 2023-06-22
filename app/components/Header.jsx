@@ -65,7 +65,7 @@ const fetchCategories = async () => {
     {/* link is for logo*/}
     <Wrapper className="h-[60] flex justify-between items-center">
     <Link href="/">
-     <img src="/logo.PNG" alt="logo" className="w-[40px] md:w-[60px]"/>
+     <img src="/logo.png" alt="logo" className="w-[40px] md:w-[60px]"/>
     </Link>
     <Menu showCatMenu={showCatMenu} setShowCatMenu={setShowCatMenu}  categories={categories} />
    {/* below is code for mobile menu if screen srink to phone size */}

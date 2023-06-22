@@ -3,7 +3,7 @@
  import React from 'react'
 
  // below fuction to get static paths
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const products = await fetch(`${API_URL}/api/products?populate=*`, {
@@ -11,8 +11,8 @@ export async function generateStaticParams() {
   }).then((res) => res.json())
  
   return products?.data?.map((p) => ({
-    product: p.attributes.slug,
-    category: p.attributes.category,
+    category: p.attributes.slug,
+     
   }))
 }
 
