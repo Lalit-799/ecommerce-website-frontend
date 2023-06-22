@@ -8,7 +8,7 @@ export const dynamicParams = false;
 export async function generateStaticParams() {
   const products = await fetch(`${API_URL}/api/products?populate=*`, {
     headers: { authorization:'Bearer '+STRAPI_API_TOKEN },
-  }).then((res) => res.json())
+  },{cache: "force-cache"}).then((res) => res.json())
  
   return products?.data?.map((p) => ({
     category: p.attributes.slug,
@@ -23,12 +23,12 @@ export default async function product({params:{slug}}){
      // data fatching start
   const res = await fetch(`${API_URL}/api/products?populate=*&filters[slug][$eq]=${slug}`, {
    headers: { authorization:'Bearer '+STRAPI_API_TOKEN },
- });
+ },{cache: "force-cache"});
  const product = await res.json();
  
  const re = await fetch(`${API_URL}/api/products?populate=*&[filters][slug][$ne]=${slug}`, {
    headers: { authorization:'Bearer '+STRAPI_API_TOKEN },
- });
+ },{cache: "force-cache"});
  const products = await re.json()
  // data fatching end
   return (
