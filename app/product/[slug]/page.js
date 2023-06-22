@@ -22,12 +22,12 @@ export async function generateStaticParams() {
 export default async function Product({params:{slug}}){
     
      // data fatching start
-  const res = await fetch(`${API_URL}/api/products?populate=*&filters[slug][$eq]=${slug}`, {
+  const res = await fetch(`${API_URL}/api/products?populate=*&filters[slug][$eq]=${slug}&pagination[page]=1&pagination[pageSize]=33`, {
    headers: { authorization:'Bearer '+STRAPI_API_TOKEN },
  });
  const product = await res.json();
  
- const re = await fetch(`${API_URL}/api/products?populate=*&[filters][slug][$ne]=${slug}`, {
+ const re = await fetch(`${API_URL}/api/products?populate=*&[filters][slug][$ne]=${slug}&pagination[page]=1&pagination[pageSize]=33`, {
    headers: { authorization:'Bearer '+STRAPI_API_TOKEN },
  });
  const products = await re.json()

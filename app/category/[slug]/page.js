@@ -18,11 +18,11 @@ export async function generateStaticParams() {
 export default async function Category({params:{slug}}){
     
    // data fatching start
-  const res = await fetch(`${API_URL}/api/categories?filters[slug][$eq]=${slug}`, {
+  const res = await fetch(`${API_URL}/api/categories?filters[slug][$eq]=${slug}&pagination[page]=1&pagination[pageSize]=33`, {
     headers: { authorization:'Bearer '+STRAPI_API_TOKEN },
   });
   const category = await res.json();
-  const re = await fetch(`${API_URL}/api/products?populate=*&[filters][category][slug][$eq]=${slug}`, {
+  const re = await fetch(`${API_URL}/api/products?populate=*&[filters][category][slug][$eq]=${slug}&pagination[page]=1&pagination[pageSize]=33`, {
     headers: { authorization:'Bearer '+STRAPI_API_TOKEN },
   });
   const products = await re.json()
