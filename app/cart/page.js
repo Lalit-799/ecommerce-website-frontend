@@ -88,10 +88,7 @@ const Cart = () => {
                                         international transaction fees.
                                     </div>
                                 </div>
-                                <div className="text-red-600 mt-1">
-                                  Note:It's a project website; don't make any real payments. 
-                                    
-                                </div>
+                                 
                            
                                 {/* BUTTON START */}
                                 <button
