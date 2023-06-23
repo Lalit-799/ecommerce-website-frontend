@@ -9,7 +9,7 @@ import './globals.css'
 // home page
 export default async function Home() {
   // data fatching start
-  const res = await fetch(`${API_URL}/api/products?populate=*&pagination[page]=1&pagination[pageSize]=33`, {
+  const res = await fetch(`${API_URL}/api/products?populate=*&pagination[pageSize]=33`, {
     headers: { authorization:'Bearer '+STRAPI_API_TOKEN },
   });
   const products = await res.json()
